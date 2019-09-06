@@ -67,11 +67,11 @@ include 'header.php';
                                             <td>".$rows['books_name']."</td>  
                                             <td><img src='".$rows['books_image']."' width='50' height='50'></td>  
                                             <td>".$rows['books_author_name']."</td>  
-                                            <td>".$rows['books_publication_name']." Name</td>  
-                                            <td>".$rows['books_purchase_date']." Date</td>  
+                                            <td>".$rows['books_publication_name']."</td>  
+                                            <td>".$rows['books_purchase_date']."</td>  
                                             <td>".$rows['books_price']."</td>  
                                             <td>".$rows['books_qty']."</td>  
-                                            <td>".$rows['available_qty']." Quantity</td>  
+                                            <td>".$rows['available_qty']."</td>  
                                             <td>".$rows['librarian_username']."</td>  
                                             </tr>
                                     ";

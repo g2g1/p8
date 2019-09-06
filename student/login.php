@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../includes/conn.inc.php';
 ?>
 <!DOCTYPE html>
@@ -80,9 +81,10 @@ if(isset($_POST['submit1'])){
         </div>
         <?php
     }else{
+        $_SESSION['username'] = $username;
         ?> 
         <script type="text/javascript">
-            window.location = "aa.php";
+            window.location = "my_issued_books.php";
         </script>
         <?php
     }

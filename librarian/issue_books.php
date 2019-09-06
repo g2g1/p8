@@ -173,8 +173,11 @@ include 'header.php';
                                     $query = "INSERT INTO p8_issue_books
                                     (student_enrollment,student_name,student_sem,student_contact,student_email,books_name,books_issue_date,books_return_date,student_username) 
                                     
-                                    VALUES('$enrollment','$studentname','$studentsem','studentcontact','studentemail','booksname','booksissuedate','','$studentusername')";
+                                    VALUES('$enrollment','$studentname','$studentsem','$studentcontact','$studentemail','$booksname','$booksissuedate','','$studentusername')";
                                     $stmt = mysqli_query($link, $query);
+
+                                    $query = "UPDATE p8_add_books SET available_qty=available_qty-1 WHERE books_name = '$booksname'";
+                                    $res = mysqli_query($link, $query);
 
 
                                 ?>
