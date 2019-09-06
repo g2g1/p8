@@ -44,5 +44,5 @@ include 'header.php';
 
 
 <?php
-include 'foter.php';
+include 'footer.php';
 ?>

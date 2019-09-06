@@ -34,9 +34,22 @@ include 'header.php';
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
+
+                            <form action="display_books.php" method="post" name="form1">
+                                <input type="text" name="search" />
+                                <input type="submit" name="submit1" value="Search" />
+
+                            </form>    
                                 <?php
-                                $query = "SELECT * FROM p8_add_books";
+
+                            if(isset($_POST['submit1'])){
+                                $search = $_POST['search'];
+                              
+
+                                $query = "SELECT * FROM p8_add_books WHERE (books_name LIKE '%$search%');";
                                 $stmt = mysqli_query($link, $query);
+                                
+
 
                                 echo "<table class='table table-bordered'>
                                             <tr><th>Books Name</th>  
@@ -66,7 +79,7 @@ include 'header.php';
 
                                 echo "</table>";
 
-
+                                }   
                                 ?>
                             </div>
                         </div>
