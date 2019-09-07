@@ -21,7 +21,7 @@ include '../includes/conn.inc.php';
 
 <br>
 
-<div class="col-lg-12 text-center ">
+<div class="col-lg-12 text-center">
     <h1 style="font-family:Lucida Console">Library Management System</h1>
 </div>
 

@@ -79,6 +79,43 @@ include 'header.php';
 
                                 echo "</table>";
 
+                                }else{
+
+                                $query = "SELECT * FROM p8_add_books;";
+                                $stmt = mysqli_query($link, $query);
+                                
+
+
+                                echo "<table class='table table-bordered'>
+                                            <tr><th>Books Name</th>  
+                                            <th>Image</th>  
+                                            <th>Author</th>  
+                                            <th>Publication Name</th>  
+                                            <th>Purchase Date</th>  
+                                            <th>Price</th>  
+                                            <th>Quantity</th>  
+                                            <th>Available Quantity</th>  
+                                            <th>Librarian</th></tr>  
+                                ";
+                                while ($rows = mysqli_fetch_array($stmt)) {
+                                    echo " <tr>
+                                            <td>".$rows['books_name']."</td>  
+                                            <td><img src='".$rows['books_image']."' width='50' height='50'></td>  
+                                            <td>".$rows['books_author_name']."</td>  
+                                            <td>".$rows['books_publication_name']."</td>  
+                                            <td>".$rows['books_purchase_date']."</td>  
+                                            <td>".$rows['books_price']."</td>  
+                                            <td>".$rows['books_qty']."</td>  
+                                            <td>".$rows['available_qty']."</td>  
+                                            <td>".$rows['librarian_username']."</td>  
+                                            </tr>
+                                    ";
+                                }
+
+                                echo "</table>";
+
+
+
                                 }   
                                 ?>
                             </div>
