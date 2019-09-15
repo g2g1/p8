@@ -1,7 +1,9 @@
 <?php
-
 include 'header.php';
 
+$usernameSession = $_SESSION['username'];
+$query = "UPDATE p8_messages SET read1 = 'yes' WHERE dusername = '$usernameSession';";
+$result = mysqli_query($link,$query);
 ?>
 
 
@@ -36,42 +38,38 @@ include 'header.php';
                             </div>
                             <div class="x_content">
                                 <table class="table table-bordered">
-                                    <th>
-                                        Student's Enrollment 
-                                    </th>
-                                   <th>
-                                        Books Name 
-                                    </th>
-                                   <th>
-                                        Books issue date 
-                                    </th>
+                                    <tr>
+                                        <th>Full Name</th>
+                                    <th>Title</th>
+                                    <th>Message</th>
+                                    </tr>  
+                            <?php
+                            $query = "SELECT * FROM p8_messages WHERE dusername = '$usernameSession' ORDER BY id DESC;";
+                            $res = mysqli_query($link, $query);
+                            while($rows = mysqli_fetch_array($res)){
+                                $libUserName = $rows['susername'];
+                                $query2 = "SELECT * FROM p8_librarians_registration WHERE username = '$libUserName'";
+                                $res2 = mysqli_query($link, $query2);
+                                while($rows2 = mysqli_fetch_array($res2)){
+                                    $libFullName = $rows2['firstname']." ".$rows2['lastname']; 
+                                }
 
-                                    <?php
-                                    $usernameSession = $_SESSION['username'];
-                                    $query = "SELECT * FROM p8_issue_books WHERE student_username = '$usernameSession';";
-                                    $res = mysqli_query($link, $query);
-                                    while($rows = mysqli_fetch_array($res)){
-                                        echo "
-                                        <tr>
-                                            <td>".$rows['student_enrollment']."</td>
-                                        
-                                        
-                                            <td>".$rows['books_name']."</td>
-                                        
-                                        
-                                            <td>".$rows['books_issue_date']."</td>
-                                        </tr>
-                                        ";
+                                echo "
 
-
-                                    }
-
-                                    echo "</table>";
-
-                                    ?>
+                                    <tr>
+                                    <td>".$libFullName."</td>
+                                    <td>".$rows['title']."</td>
+                                    <td>".$rows['msg']."</td>
                                     
-                                </table>
-                                
+                                    </tr>
+
+                                ";
+
+                            }
+
+                            echo "</table>";
+                            
+                            ?>
                             </div>
                         </div>
                     </div>

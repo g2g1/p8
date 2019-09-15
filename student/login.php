@@ -33,7 +33,7 @@ include '../includes/conn.inc.php';
 <div class="login_wrapper">
 
     <section class="login_content">
-        <form name="form1" action="" method="post">
+        <form name="form1" action="login.php" method="post">
             <h1>User Login Form</h1>
 
             <div>
@@ -80,6 +80,7 @@ if(isset($_POST['submit1'])){
             <strong style="color:white">Invalid</strong> Username Or Password.
         </div>
         <?php
+        
     }else{
         $_SESSION['username'] = $username;
         ?> 

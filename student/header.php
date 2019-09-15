@@ -1,3 +1,14 @@
+<?php
+session_start();
+include '../includes/conn.inc.php';
+
+$num = 0;
+$usernameSession = $_SESSION['username'];
+$query = "SELECT * FROM p8_messages WHERE dusername = '$usernameSession' AND read1 = 'n';";
+$res = mysqli_query($link, $query);
+$num = mysqli_num_rows($res);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +46,7 @@
                     <div class="profile_info">
                         <span>Welcome,</span>
 
-                        <h2>John Doe</h2>
+                        <h2><?php echo $_SESSION['username'];  ?></h2>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -51,10 +62,10 @@
                             <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
 
                             </li>
-                            <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                            <li><a href="search_books.php"><i class="fa fa-edit"></i> Search Books <span class="fa fa-chevron-down"></span></a>
 
                             </li>
-                            <li><a><i class="fa fa-desktop"></i> UI Elements <span
+                            <li><a href="my_issued_books.php"><i class="fa fa-desktop"></i> My issued books <span
                                     class="fa fa-chevron-down"></span></a>
 
                             </li>
@@ -87,11 +98,11 @@
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
                                aria-expanded="false">
-                                <img src="images/img.jpg" alt="">John Doe
+                                <img src="images/img.jpg" alt=""><?php echo $_SESSION['username'];  ?>
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                <li><a href="logout.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                             </ul>
                         </li>
 
@@ -99,7 +110,7 @@
                             <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
                                aria-expanded="false">
                                 <i class="fa fa-envelope-o"></i>
-                                <span class="badge bg-green">6</span>
+                                <span class="badge bg-green" onclick="javascript:window.location='message_from_librarian.php'"><?php echo $num; ?></span>
                             </a>
 
                         </li>

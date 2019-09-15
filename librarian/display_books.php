@@ -1,4 +1,11 @@
 <?php
+session_start();
+if(!isset($_SESSION['librarian'])){
+    header("Location: login.php");
+}
+
+
+
 include '../includes/conn.inc.php';
 include 'header.php';
 ?>
@@ -60,7 +67,7 @@ include 'header.php';
                                             <th>Price</th>  
                                             <th>Quantity</th>  
                                             <th>Available Quantity</th>  
-                                            <th>Librarian</th></tr>  
+                                            <th>Delete</th></tr>  
                                 ";
                                 while ($rows = mysqli_fetch_array($stmt)) {
                                     echo " <tr>
@@ -72,7 +79,7 @@ include 'header.php';
                                             <td>".$rows['books_price']."</td>  
                                             <td>".$rows['books_qty']."</td>  
                                             <td>".$rows['available_qty']."</td>  
-                                            <td>".$rows['librarian_username']."</td>  
+                                            <td><a href='delete_books.php?id=".$rows['id']."'>Delete</a></td>  
                                             </tr>
                                     ";
                                 }
@@ -80,7 +87,6 @@ include 'header.php';
                                 echo "</table>";
 
                                 }else{
-
                                 $query = "SELECT * FROM p8_add_books;";
                                 $stmt = mysqli_query($link, $query);
                                 
@@ -95,7 +101,7 @@ include 'header.php';
                                             <th>Price</th>  
                                             <th>Quantity</th>  
                                             <th>Available Quantity</th>  
-                                            <th>Librarian</th></tr>  
+                                            <th>Delete</th></tr>  
                                 ";
                                 while ($rows = mysqli_fetch_array($stmt)) {
                                     echo " <tr>
@@ -107,7 +113,7 @@ include 'header.php';
                                             <td>".$rows['books_price']."</td>  
                                             <td>".$rows['books_qty']."</td>  
                                             <td>".$rows['available_qty']."</td>  
-                                            <td>".$rows['librarian_username']."</td>  
+                                            <td><a href='delete_books.php?id=".$rows['id']."'>Delete</a></td>  
                                             </tr>
                                     ";
                                 }

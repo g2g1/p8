@@ -1,4 +1,10 @@
 <?php
+session_start();
+if(!isset($_SESSION['librarian'])){
+    header("Location: login.php");
+}
+
+
 include '../includes/conn.inc.php';
 
 $id = $_GET['id'];

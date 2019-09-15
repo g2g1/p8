@@ -1,4 +1,11 @@
 <?php
+
+session_start();
+if(!isset($_SESSION['librarian'])){
+    header("Location: login.php");
+}
+
+
 include 'header.php';
 include '../includes/conn.inc.php';
 
